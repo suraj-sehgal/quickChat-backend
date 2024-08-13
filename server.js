@@ -28,7 +28,7 @@ app.use('/api/message',messageRoutes);
 // app.use(notFound);
 // app.use(errorHandler);
 
-
+console.log(process.env.SOCKET_SERVER)
 
 const server = app.listen(PORT, () => {
     console.log(`QuickChat app backend listening on port http://localhost:${PORT}`.yellow.bold)
@@ -37,7 +37,7 @@ const server = app.listen(PORT, () => {
 const io = require('socket.io')(server,{
     pingTimeout: 60000,
     cors:{
-        origin:"http://localhost:3000",
+        origin:`${process.env.SOCKET_SERVER}`,
     },
 });
 
