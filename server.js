@@ -37,12 +37,12 @@ const server = app.listen(PORT, () => {
 const io = require('socket.io')(server,{
     pingTimeout: 60000,
     cors:{
-        origin:"https://poetic-selkie-70f8b8.netlify.app/",
+        origin:"http://127.0.0.1/",
     },
 });
 
 io.on("connection",(socket)=>{
-    // console.log("Connected to socket.io");
+    console.log("Connected to socket.io");
     socket.on("setup",(userData)=>{
         socket.join(userData._id);
         socket.emit("connected");
